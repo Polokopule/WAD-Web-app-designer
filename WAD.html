@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    <style>
+        .nav{
+            position:fixed;
+            top:0;
+            left:0;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.25);
+            width: 100%;
+            display: flex;
+            height: 45px;
+            align-items: center;
+            background:#fff;
+            justify-content: center;
+            
+        }
+      .name{
+            position:absolute;
+            left: 10px;
+            padding-right: 10px;
+        }
+        b{
+            font-size: 100%;
+            font-weight: 400;
+        }
+        .linehead{
+            font-weight: 400;
+        }
+        .linehead > span{
+            font-weight: bolder;
+            font-size: 60px;
+            border-top: 8px solid #FF5722;
+            color: #0055AC;
+        }
+        .box{
+            background:#f2f2f2;
+            padding: 18px;
+            border-radius: 10px;
+            
+        }
+        #about > button{
+            margin-top: 20px;
+            
+        }
+        #grid{
+            display:flex;
+            flex-wrap:wrap;
+            gap:10px;
+            
+            justify-content: center;
+        }
+       
+        iframe{
+            border: none;
+border-radius: 10px;
+        }
+        pre{
+            color: #999;
+            border-left: 2px solid #999;
+            padding: 10px;
+            height: 100px;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    
+   <div id="app"></div>
+<div class="nav">
+   <div class="name"> 
+        <img src="logo.png" width="40" alt="">
+       
+    </div>
+  
+    
+     <center><b>Web App Designer</b></center>
+      
+</div>
+
+
+<br><br><br><br>
+
+<div class="box">
+<p id="about">
+    
+   WAD.js or Web app designer is a javascript library that is aimed to simplify and save time on designing Componets like Forms,Sidebar,Tooltiops... and more, With this library we believe developers will complete thier dream projects without wasting any time and, WAD.js is a game-changing when it comes to responsive designs, as we all know <i>"Responsive"</i> is one of the scary words to all developers, guess what!!? with WAD.js the nightmare of not being able to make anything responsive it is now gone
+ </p>
+
+</div>
+<center>
+ <h1 class="linehead">Explore WAD.js Components</h1>
+   
+</center>
+
+ <div id="grid"></div>
+ <center>
+ <h1 class="linehead">Is WAD.js Fully released?</h1>
+   
+</center>
+ 
+ 
+<div class="box">
+   <p> No, WAD.js is not fully releasede, Minds behind WAD.js request that you should be patient while other  components will be added after sometime, because we are looking for developers feedback if this library will be helpful for them or not</p></div>
+
+<script>
+    
+   
+    function animate(){
+    
+
+    var body = document.querySelector(".animate");
+    for(i=0;i<50;i++){
+    var h= document.createElement("div");
+    var k =Math.floor(Math.random()*100*i);
+       Object.assign(h.style, { 
+           position:"fixed",
+       width:k*4+"px",
+         height:k*4+"px",
+         background:"red",
+         left:k+"px",
+         top:k*i*10+"px",
+         zIndex:'-1',
+         opacity:"0.2"
+        
+            
+    });
+    
+    body.prepend(h)
+    }
+   
+    }
+    animate()
+    
+    
+
+</script>
+
+    <script type="module">
+           var app = document.querySelector("#app");
+           var about = document.querySelector("#about");
+           var grid = document.querySelector("#grid");
+                 import {Modal,Button,Sidebar,Card} from "/lib/WAD.js";
+           
+           const bt = Button.create(
+               ["About Developer"],(e)=>{
+                   Modal.create(`
+                       <img src="src/by.jpg" width="200px"  style="border-radius: 10px;"alt=""><h1>Poloko Edward Pule</h1>
+                       <p>
+                           I Am 19yrs old web app developer hailing from Kingdom in the sky(Lesotho), i have been in this field for 5years now, and looking forward to create a captivating online exprience for all Developers who use Thier Android phone to develop
+                       </p>
+                       `);
+               }
+           );
+           about.append(bt);
+         
+         const sidebar= Sidebar.create(
+         [
+             {
+             text:"Feedback",
+             href:"About.html"
+             },{
+                 text:"Follow us",
+                 href:"folllw"
+             }
+         ]
+         );
+         
+      app.append(sidebar); 
+
+
+        
+var list = [
+    
+    {
+        title:"Button",
+        about:`this will handle the creation of styled buttons and their functionality.<pre>import {Button} from "/lib/WAD.js";
+Button.create(text, onClick)
+Button.create("Read More", (e) =>
+     { 
+     alert("Button clicked")
+      });</pre> `
+    },
+    {
+        title:"Modal",
+        about:`This will manage the modal creation and close functionality<pre>import {Modal} from "/lib/WAD.js";
+Modal.create(content)
+Modal.create(
+'Write anything inside this modal 
+you can also add buttons  or any other 
+things, html elements will still work
+ inside the modal content')</pre>`
+    },
+    
+    {
+        title:"Navbar",
+        about:`This will Create a responsive navigation bar<pre>import {Navbar} from "/lib/WAD.js";
+Navbar.create(links)
+Navbar.create([
+    {
+        text:"Home",
+        href:"home.html"
+    },//Add more links
+    
+])</pre>`
+    },
+    {
+        title:"Table",
+        about:`<pre>import {Table} from "/lib/WAD.js";
+Table.create(headers, rows);
+const table = Table.create( 
+  ['Name', 'Age', 'Occupation'],
+   [ ['John Doe', '30', 'Engineer'],
+    ['Jane Smith', '28', 'Designer']] );</pre>This will Create a customizable table with styled headers and rows`
+    },
+    {
+        title:"Sidebar",
+        about:`This will Create a collapsible sidebar for navigation or options.<pre>import {Sidebar} from "/lib/WAD.js";
+Sidebar.create(Items)
+Sidebar.create([
+    {
+        text:"Home",
+        href:"home.html"
+    },//Add more items
+    
+])</pre>`
+    },{
+        title:"Alert",
+        about:`This will Creates a dismissible alert banner for notifications.<pre>import {Alert} from "/lib/WAD.js";
+Alert.create(message,type)
+Alert.create(["Error"],"error");
+Alert.create(["Informatiom"],"info");
+Alert.create(["Success"],"success");</pre>`
+    },
+{
+        title:"Dropdown",
+        about:`This will Creates a customizable dropdown menu for selecting items.<pre>import {Dropdown} from "/lib/WAD.js";
+Dropdown.create(options, onSelect)
+Dropdown.create([
+    "App Decloper",
+    "Web app Devloper",
+    "Fashion Designer"
+],
+(values)=>{
+    alert("you selected:"+values)
+})</pre>`
+    },
+{
+        title:"Accordion",
+        about:`This will Creates an accordion where sections can be expanded or collapsed.<pre>import {Accordion} from "/lib/WAD.js";
+Accordion.create(items)
+Accordion.create([
+    {
+       title:"Home",
+       content:"Something good"
+    },//Add more items
+    
+])</pre>`
+    },
+
+
+  {
+        title:"Badge",
+        about:`This will Creates a badge to display a count or status
+
+<pre>import {Badge} from "/lib/WAD.js";
+Badge.create(text);
+//this badge can be added 
+inside a button so that it  indicates
+ number of messages ect....
+Badge.create("89")</pre>`
+    },
+  {
+        title:"Toast",
+        about:`This will Displays brief notifications that pop up and disappear after a set time<pre>import {Toast} from "/lib/WAD.js";
+Toast.create(text,duration)
+Toast.create(["Welcome to WAD.js"],10);
+</pre>`
+    },
+{
+        title:"Chip",
+        about:`A chip is a compact element that represents input, attribute, or action.
+<pre>import {Chip} from "/lib/WAD.js";
+Chip.create(text, Bolean)
+Chip.create(["My Chip"],true)</pre>`
+    },
+    
+{
+        title:"Spinner",
+        about:`This will Create a spinner for indicating loading or processing.<pre>import {Spinner} from "/lib/WAD.js";
+Spinner.create(size)
+Spinner.create("50")</pre>`
+    },
+    {
+        title:"Form",
+        about:`This will  handle form creation with customizable input fields.<pre>import {Form} from "/lib/WAD.js";
+Form.create(fields,buttonText,Callback)
+orm.create([
+ {
+  type: 'text',
+  placeholder: 'Name',
+  required: true
+ }, {
+  type: 'textarea', 
+ placeholder: 'Message',
+  required: true 
+ } ],["Submite button"],
+  () => { 
+ alert('Form submitted successfully!'); 
+ }); 
+</pre>`
+    },
+{
+        title:"Card",
+        about:`This file will create the logic for  styling cards.<pre>import {Card} from "/lib/WAD.js";
+Card.create(content)
+Card.create("Takes in Content, 
+    html elements supported")</pre>`
+    },
+{
+        title:"Tabs",
+        about:`This file will create the logic for responsive and functioning tabs<pre>import {Tabs} from "/lib/WAD.js";
+Tabs.create(items)
+Tabs.create([
+    {
+      title:"Tab1",
+      content:"content for tab1"
+      
+    },//add more tabs
+])
+</pre>`
+    },
+{
+        title:"Progressbar",
+        about:`This file will create the logic for  styling cards.<pre>import {Card} from "/lib/WAD.js";
+Card.create(content)
+Card.create("Takes in Content, 
+    html elements supported")</pre>`
+    },
+
+
+
+
+];
+for(i =0; i< list.length; i++){
+    var card4 = Card.create(
+                        `
+                      
+                        <h1>${list[i].title}</h1>
+                        <p>${list[i].about} </p>`
+                 );
+                
+      var btn4 =   Button.create("Read More", (e) => { 
+                     alert("j")
+                 });
+                 
+                 
+grid.append(card4);
+
+
+}
+
+
+
+    </script>
+</body>
+</html>
